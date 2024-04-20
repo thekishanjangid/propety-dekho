@@ -114,6 +114,64 @@ export const Data = [
     image2: require("./Image/pexels-expect-best-323780.jpg"),
     image3: require("./Image/pexels-expect-best-323780.jpg"),
   },
+  {
+    id : 5,
+    type: "2 BHK Flat",
+    price: "38 Lac",
+    size: "1250 sqft",
+    address :  "Narayan Vihar, Jaipur",
+    rating: 177,
+
+    description: "Men Self Design Bandhgala Festive Blazer  (Maroon)",
+    image: require("./Image/pexels-expect-best-323780.jpg"),
+    image1: require("./Image/pexels-expect-best-323780.jpg"),
+    image2: require("./Image/pexels-expect-best-323780.jpg"),
+    image3: require("./Image/pexels-expect-best-323780.jpg"),
+  },
+  {
+    id : 6,
+    type: "2 BHK Flat",
+    price: "38 Lac",
+    size: "1250 sqft",
+    address :  "Narayan Vihar, Jaipur",
+    rating: 177,
+
+    description: "Men Self Design Bandhgala Festive Blazer  (Maroon)",
+    image: require("./Image/pexels-expect-best-323780.jpg"),
+    image1: require("./Image/pexels-expect-best-323780.jpg"),
+    image2: require("./Image/pexels-expect-best-323780.jpg"),
+    image3: require("./Image/pexels-expect-best-323780.jpg"),
+  },
+  
+  {
+    id : 7,
+    type: "2 BHK Flat",
+    price: "38 Lac",
+    size: "1250 sqft",
+    address :  "Narayan Vihar, Jaipur",
+    rating: 177,
+
+    description: "Men Self Design Bandhgala Festive Blazer  (Maroon)",
+    image: require("./Image/pexels-expect-best-323780.jpg"),
+    image1: require("./Image/pexels-expect-best-323780.jpg"),
+    image2: require("./Image/pexels-expect-best-323780.jpg"),
+    image3: require("./Image/pexels-expect-best-323780.jpg"),
+  },
+
+  {
+    id : 8,
+    type: "2 BHK Flat",
+    price: "38 Lac",
+    size: "1250 sqft",
+    address :  "Narayan Vihar, Jaipur",
+    rating: 177,
+
+    description: "Men Self Design Bandhgala Festive Blazer  (Maroon)",
+    image: require("./Image/pexels-expect-best-323780.jpg"),
+    image1: require("./Image/pexels-expect-best-323780.jpg"),
+    image2: require("./Image/pexels-expect-best-323780.jpg"),
+    image3: require("./Image/pexels-expect-best-323780.jpg"),
+  },
 
 
 ];

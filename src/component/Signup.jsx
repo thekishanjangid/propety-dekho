@@ -89,13 +89,13 @@ const Signup = () => {
             type="submit"
             class="w-100  btn btn-success"
             onClick={SubmitForm}
-            style={{ backgroundColor: "#23629F" }}
+            style={{ backgroundColor: "rgb(94, 63, 224)" }}
           >
             Submit
           </button>
           <br />
 
-          <Link to="/" className="mt-3" style={{ color: "#23629F" }}>
+          <Link to="/" className="mt-3" style={{ color: "rgb(94, 63, 224)" }}>
             Already have an Account
           </Link>
         </form>

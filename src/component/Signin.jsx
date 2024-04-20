@@ -79,13 +79,13 @@ const Signin = ({ setloginEmail, loginEmail }) => {
             type="submit"
             class="w-100  btn btn-success"
             onClick={submitHandle}
-            style={{ backgroundColor: "#23629F" }}
+            style={{ backgroundColor: "rgb(94, 63, 224)" }}
           >
             Submit
           </button>
           <br />
           <br />
-          <Link to="/Signup" className="mt-3" style={{ color: "#23629F" }}>
+          <Link to="/Signup" className="mt-3" style={{ color: "rgb(94, 63, 224)" }}>
             Create an Account
           </Link>
         </form>

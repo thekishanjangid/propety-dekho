@@ -48,8 +48,8 @@ const Navbar = ({ setcount, count, category, setcategory }) => {
         <div id="container" className={scrolled ? 'scrolled' : ''}>
             <div className="shopName"><Link to="/Home"><b>PROPERTY</b>DEKHO</Link></div>
             <div id="collection">
-                <div id="clothing"><Link to="/Home">HOME</Link></div>
-                <div id="accessories"><Link to="/Home">PROPERTIES</Link></div>
+                <div id="Home"><Link to="/Home">HOME</Link></div>
+                <div id="Properties"><Link to="/Properties">PROPERTIES</Link></div>
                 
             </div>
             <div id="collection-login">

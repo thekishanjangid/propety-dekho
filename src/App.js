@@ -5,7 +5,7 @@ import Signup from "./component/Signup";
 import Navbar from "./component/Navbar";
 import Home from "./Home";
 import "./App.css";
-
+import Properties from "./component/Properties";
 // import ProductsDetails from './component/ProductsDetails'
 import "./component/Pdetails.css";
 // import ProductList from './component/ProductList'
@@ -45,6 +45,7 @@ const App = () => {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/productDetails" element={<ProductDetails />} />
+        <Route path="/Properties" element={<Properties />} />
         
       </Routes>
     </div>
