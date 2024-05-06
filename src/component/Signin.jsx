@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 
-const Signin = ({ setloginEmail, loginEmail }) => {
-  const [formData, setformData] = useState({});
-  const [getDataArray, setgetDataArray] = useState([]);
+const Signin = ({ setLoginEmail, loginEmail }) => {
+  const [formData, setFormData] = useState({});
+  const [getDataArray, setGetDataArray] = useState([]);
 
   const navigate = useNavigate();
 
   const changeHandle = (e) => {
-    setformData({
+    setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
@@ -23,61 +22,51 @@ const Signin = ({ setloginEmail, loginEmail }) => {
     if (findData) {
       localStorage.setItem("LoggedInUser", JSON.stringify(formData));
       navigate("/Home");
-      Swal.fire({
-        title: "Welcome!",
-        text: `Welcome back ${findData.name} !`,
-        icon: "success",
-        confirmButtonText: "continue",
-      });
-      setloginEmail(loginEmail + 1);
+      setLoginEmail(loginEmail + 1);
     } else {
-      Swal.fire({
-        title: "Email is not valid!",
-        text: "Use Valid email!",
-        icon: "error",
-        confirmButtonText: "ok",
-      });
+      alert("Email is not valid! Use a valid email!");
     }
   };
 
   useEffect(() => {
     const getItem = JSON.parse(localStorage.getItem("user")) || [];
-    setgetDataArray(getItem);
+    setGetDataArray(getItem);
   }, []);
+
   return (
     <div>
-      <center style={{ marginTop: "200px" }}>
-        <form className="w-50 p-5 mt-5  roundesd-4  shadow text-start">
-          <div class="mb-3">
-            <label for="email" class="form-label">
-              Email{" "}
+      <center style={{ position : "relative" , top : "200px" }} >
+        <form className="w-50 p-5  rounded-4  shadow text-start">
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email
             </label>
             <input
               type="email"
               name="email"
               onChange={changeHandle}
-              class="form-control"
+              className="form-control"
               id="email"
               aria-describedby="emailHelp"
             />
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">
-              password{" "}
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Password
             </label>
             <input
               type="password"
               name="password"
               onChange={changeHandle}
-              class="form-control"
-              id="email"
+              className="form-control"
+              id="password"
               aria-describedby="emailHelp"
             />
           </div>
 
           <button
             type="submit"
-            class="w-100  btn btn-success"
+            className="w-100 btn btn-success"
             onClick={submitHandle}
             style={{ backgroundColor: "rgb(94, 63, 224)" }}
           >

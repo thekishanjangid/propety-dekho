@@ -6,47 +6,40 @@ import Navbar from "./component/Navbar";
 import Home from "./Home";
 import "./App.css";
 import Properties from "./component/Properties";
-// import ProductsDetails from './component/ProductsDetails'
-import "./component/Pdetails.css";
-// import ProductList from './component/ProductList'
 import ProductDetails from "./component/ProductDetails";
+import Owner from "./component/owner";
 
 
 const App = () => {
-  const [loggedData, setloggedData] = useState();
-  const [loginEmail, setloginEmail] = useState(0);
+  const [loggedData, setLoggedData] = useState();
+  const [loginEmail, setLoginEmail] = useState(0);
   const [count, setCount] = useState(0);
   const [category, setCategory] = useState();
 
   const location = useLocation();
 
   useEffect(() => {
-    let loggedInuser = JSON.parse(localStorage.getItem("LoggedInUser"));
-    setloggedData(loggedInuser);
+    let loggedInUser = JSON.parse(localStorage.getItem("LoggedInUser"));
+    setLoggedData(loggedInUser);
   }, [count, loginEmail]);
-
-  const showNavbar = () => {
-    return loggedData?.email && location.pathname !== "/Signup" && location.pathname !== "/";
-  };
 
   return (
     <div>
-      {showNavbar() && (
-        <Navbar
-          category={category}
-          setcategory={setCategory}
-          setcount={setCount}
-          count={count}
-        />
-      )}
+      <Navbar
+        category={category}
+        setCategory={setCategory}
+        setCount={setCount}
+        count={count}
+      />
 
       <Routes>
-        <Route path="/" element={<Signin setloginEmail={setloginEmail} loginEmail={loginEmail} />} />
+        <Route path="/" element={<Signin setLoginEmail={setLoginEmail} loginEmail={loginEmail} />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/productDetails" element={<ProductDetails />} />
         <Route path="/Properties" element={<Properties />} />
-        
+        <Route path="/owner" element={<Owner />} />
+
       </Routes>
     </div>
   );

@@ -44,8 +44,8 @@ const Signup = () => {
 
   return (
     <div>
-      <center style={{ marginTop: "200px" }}>
-        <form className="w-50 p-5 mt-5  rounded-4  shadow text-start">
+      <center >
+        <form style={{ position : "relative" , top : "200px" }} className="w-50 p-5  rounded-4  shadow text-start">
           <div class="mb-3">
             <label for="name" class="form-label">
               Name

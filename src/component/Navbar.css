@@ -15,13 +15,14 @@ body {
 }
 
 #container {
+
     background-color: transparent;
     margin: auto;
     text-align: center;
     width: 100%;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 1fr 1fr 2fr 3fr;
+    grid-template-columns: 1fr 2fr 6fr 5fr;
     font-family: 'Lato', sans-serif;
     z-index: 1000;
     justify-content: space-between;
@@ -76,9 +77,9 @@ body {
     position: relative;
     font-size: 13px;
     font-weight: 500;
-    left: 700px;
+    left: 550px;
 
-    grid-template-columns: 0.2fr 0.2fr 0.2fr 0.1fr;
+    grid-template-columns: 0.2fr 0.3fr 0.2fr 0.2fr 0.2fr;
 }
 
 #collection-login a {
@@ -310,3 +311,365 @@ body {
         top: 18px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* list the property......................  */
+
+
+
+
+/*! CSS Used from: Embedded */
+* {
+    font-family: "Open Sans";
+  }
+  * {
+    box-sizing: border-box;
+  }
+  div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    font-weight: inherit;
+    font-size: inherit;
+  }
+  body * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  /*! CSS Used from: https://static.99acres.com/universalhp/css/45977.c2077a87e9d5e1c9afaa.css ; media=all */
+  @media all {
+    * {
+      box-sizing: border-box;
+    }
+    div {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      vertical-align: baseline;
+      font-weight: inherit;
+      font-size: inherit;
+    }
+  }
+  /*! CSS Used from: https://static.99acres.com/universalhp/css/24532.24a51fca52995f8536cc.css ; media=all */
+  @media all {
+    .style__post {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #041533;
+      margin-right: 6px;
+      margin-top: -2px;
+    }
+    .style__postContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 164px;
+      height: 32px;
+      background: #ffffff;
+      border: 1px solid #e5f3fd;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .fre__outerwrap {
+      background-color: #219653;
+      padding: 5px 5px 4px 5px;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 6px;
+      border-radius: 3px;
+      color: #ffff;
+      display: inline-block;
+      position: relative;
+      margin-left: 2px;
+      margin-right: 1px;
+      overflow: hidden;
+    }
+    .fre__outerwrap .fre__innerwrap {
+      width: 115%;
+      position: absolute;
+      height: 100%;
+      top: 0px;
+      left: -2px;
+      transform: skew(150deg);
+      background: linear-gradient(
+        to right,
+        transparent 40%,
+        #baddc9 10%,
+        transparent 50%
+      );
+      background-size: 200% 200%;
+      background-repeat: no-repeat;
+      animation-name: fre__backplay;
+      animation-duration: 3s;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+    }
+  }
+  /*! CSS Used from: https://static.99acres.com/universalhp/css/main-e7a500f8.ec3fd58fb46d1d0581f7.css */
+  * {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  }
+  /*! CSS Used from: https://static.99acres.com/universalhp/css/main-ef15ccb5.0dcaffa0d433852a01fa.css */
+  * {
+    box-sizing: border-box;
+  }
+  div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    font-weight: inherit;
+    font-size: inherit;
+  }
+  body * {
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Open Sans";
+  }
+  /*! CSS Used from: Embedded */
+  * {
+    box-sizing: border-box;
+  }
+  /*! CSS Used keyframes */
+  @keyframes fre__backplay {
+    0% {
+      background-position: 100% 100%;
+    }
+    50% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+  /*! CSS Used fontfaces */
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Open Sans Regular"), local(OpenSans-Regular),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2)
+        format("woff2");
+    unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC,
+      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+      U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local("Open Sans SemiBold"), local(OpenSans-SemiBold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC,
+      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+      U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local("Open Sans Bold"), local(OpenSans-Bold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC,
+      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+      U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Open Sans Regular"), local(OpenSans-Regular),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local("Open Sans SemiBold"), local(OpenSans-SemiBold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local("Open Sans Bold"), local(OpenSans-Bold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Open Sans Regular"), local(OpenSans-Regular),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local("Open Sans SemiBold"), local(OpenSans-SemiBold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local("Open Sans Bold"), local(OpenSans-Bold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Open Sans Regular"), local(OpenSans-Regular),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2)
+        format("woff2");
+    unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC,
+      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+      U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local("Open Sans SemiBold"), local(OpenSans-SemiBold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC,
+      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+      U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local("Open Sans Bold"), local(OpenSans-Bold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC,
+      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+      U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Open Sans Regular"), local(OpenSans-Regular),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local("Open Sans SemiBold"), local(OpenSans-SemiBold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local("Open Sans Bold"), local(OpenSans-Bold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Open Sans Regular"), local(OpenSans-Regular),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local("Open Sans SemiBold"), local(OpenSans-SemiBold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local("Open Sans Bold"), local(OpenSans-Bold),
+      url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2)
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+      U+FEFF, U+FFFD;
+  }
+  
