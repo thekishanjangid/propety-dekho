@@ -4,38 +4,184 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./owner.css";
 
 const Owner = () => {
-  const navigate = useNavigate();
-  const [propertyType, setPropertyType] = useState();
-  const [lookingTo, setLookingTo] = useState();
-  const [propertyTypeId, setPropertyTypeId] = useState();
-  const [apartmentTypeId, setApartmentTypeId] = useState();
-  const [bhkTypeId, setBhkTypeId] = useState();
+  const [dealerType, setDealerType] = useState(null);
+  const [propertyType, setPropertyType] = useState(null);
+  const [lookingTo, setLookingTo] = useState(null);
+  const [apartmentTypeId, setApartmentTypeId] = useState(null);
+  const [bhkTypeId, setBhkTypeId] = useState(null);
+  const [furnishTypeId, setFurnishTypeId] = useState(null);
 
-  const [furnishTypeId, setFurnishTypeId] = useState();
+  const [builtUpArea, setBuiltUpArea] = useState("");
+  const [cost, setCost] = useState("");
+  const [buildingProjectSociety, setBuildingProjectSociety] = useState("");
+  const [locality, setLocality] = useState("");
+  const [images, setImages] = useState([]);
+  const [error, setError] = useState({
+    dealerType: "",
+    propertyType: "",
+    lookingTo: "",
+    apartmentTypeId: "",
+    bhkTypeId: "",
+    furnishTypeId: "",
+    builtUpArea: "",
+    cost: "",
+    buildingProjectSociety: "",
+    locality: "",
+    images: "",
+  });
 
-  const handlePropertyTypeChange = (type, id) => {
+  const handleValidation = () => {
+    let isValid = true;
+    const newError = { ...error };
+
+    if (!dealerType) {
+      newError.dealerType = "DealerType type is required";
+      isValid = false;
+    } else {
+      newError.dealerType = "";
+    }
+
+    if (!propertyType) {
+      newError.propertyType = "Property type is required";
+      isValid = false;
+    } else {
+      newError.propertyType = "";
+    }
+
+    if (!lookingTo) {
+      newError.lookingTo = "Looking to is required";
+      isValid = false;
+    } else {
+      newError.lookingTo = "";
+    }
+
+    if (!propertyType) {
+      newError.propertyType = "Property type ID is required";
+      isValid = false;
+    } else {
+      newError.propertyType = "";
+    }
+
+    if (!apartmentTypeId) {
+      newError.apartmentTypeId = "Apartment type ID is required";
+      isValid = false;
+    } else {
+      newError.apartmentTypeId = "";
+    }
+
+    if (!bhkTypeId) {
+      newError.bhkTypeId = "BHK type ID is required";
+      isValid = false;
+    } else {
+      newError.bhkTypeId = "";
+    }
+
+    if (!furnishTypeId) {
+      newError.furnishTypeId = "Furnish type ID is required";
+      isValid = false;
+    } else {
+      newError.furnishTypeId = "";
+    }
+
+    if (!builtUpArea) {
+      newError.builtUpArea = "Built Up Area is required";
+      isValid = false;
+    } else {
+      newError.builtUpArea = "";
+    }
+
+    if (!cost) {
+      newError.cost = "Cost is required";
+      isValid = false;
+    } else {
+      newError.cost = "";
+    }
+
+    if (!buildingProjectSociety) {
+      newError.buildingProjectSociety = "Building/Project/Society is required";
+      isValid = false;
+    } else {
+      newError.buildingProjectSociety = "";
+    }
+
+    if (!locality) {
+      newError.locality = "Locality is required";
+      isValid = false;
+    } else {
+      newError.locality = "";
+    }
+
+    if (images.length < 4) {
+      newError.images = "At least 4 images are required";
+      isValid = false;
+    } else {
+      newError.images = "";
+    }
+
+    setError(newError);
+    return isValid;
+  };
+
+  const handleListProperty = () => {
+    if (handleValidation()) {
+      // Retrieve existing data from localStorage
+      const existingData =
+        JSON.parse(localStorage.getItem("propertyData")) || [];
+
+      // Ensure that existingData is an array
+      const updatedData = Array.isArray(existingData) ? existingData : [];
+
+      // Combine existing data with the new data
+      const newData = {
+        dealerType,
+        propertyType,
+        lookingTo,
+        apartmentTypeId,
+        bhkTypeId,
+        furnishTypeId,
+        builtUpArea,
+        cost,
+        buildingProjectSociety,
+        locality,
+        images,
+      };
+
+      // Add the new data to the existing data
+      updatedData.push(newData);
+
+      // Save the updated data to localStorage
+      localStorage.setItem("propertyData", JSON.stringify(updatedData));
+
+      // Redirect or perform other actions
+    }
+  };
+
+  const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);
+    const imageUrls = files.map((file) => URL.createObjectURL(file));
+    setImages((prevImages) => [...prevImages, ...imageUrls]);
+  };
+
+  const handleDealerTypeChange = (type) => {
+    setDealerType(type);
+  };
+  const handlePropertyTypeChange = (type) => {
     setPropertyType(type);
-    setPropertyTypeId(id);
   };
 
   const handleLookingToChange = (type) => {
     setLookingTo(type);
   };
 
-  const handleApartmentTypeChange = (id) => {
-    setApartmentTypeId(id);
+  const handleApartmentTypeChange = (type) => {
+    setApartmentTypeId(type);
   };
-  const handleBhkTypeChange = (id) => {
-    setBhkTypeId(id);
+  const handleBhkTypeChange = (type) => {
+    setBhkTypeId(type);
   };
-  const handleFurnishTypeChange = (id) => {
-    setFurnishTypeId(id);
+  const handleFurnishTypeChange = (type) => {
+    setFurnishTypeId(type);
   };
-
-  const [builtUpArea, setBuiltUpArea] = useState("");
-  const [cost, setCost] = useState("");
-  const [buildingProjectSociety, setBuildingProjectSociety] = useState("");
-  const [locality, setLocality] = useState("");
 
   // Event handler to update the builtUpArea state
   const handleBuiltUpAreaChange = (event) => {
@@ -56,6 +202,7 @@ const Owner = () => {
   const handleLocalityChange = (event) => {
     setLocality(event.target.value);
   };
+
   return (
     <div
       class="main-div"
@@ -72,30 +219,72 @@ const Owner = () => {
                 <div class="form-cont">
                   <div class="field horizontal-free-scroll first-form-field">
                     <div class="group">
+                      <div class="title no-bottom">I am</div>
+                      <div>
+                        <div class="rf-group radio-group category">
+                          <div
+                            className={`rf-toggle radio radio-0 toggle-tag pills ${
+                              dealerType === "Owner" ? "toggle-active" : ""
+                            }`}
+                            onClick={() => handleDealerTypeChange("Owner")}
+                          >
+                            <div class="toggle-label">Owner</div>
+                          </div>
+                          <div
+                            className={`rf-toggle radio radio-1 toggle-tag pills ${
+                              dealerType === "Agent" ? "toggle-active" : ""
+                            }`}
+                            onClick={() => handleDealerTypeChange("Agent")}
+                          >
+                            <div class="toggle-label">Agent</div>
+                          </div>
+                          <div
+                            className={`rf-toggle radio radio-2 toggle-tag pills ${
+                              dealerType === "Builder" ? "toggle-active" : ""
+                            }`}
+                            onClick={() => handleDealerTypeChange("Builder")}
+                          >
+                            <div class="toggle-label">Builder</div>
+                          </div>
+                        </div>
+                        {error.dealerType && (
+                          <p className="error-message">{error.dealerType}</p>
+                        )}
+
+                        <div class="errorStyle"></div>
+                      </div>
                       <div class="title no-bottom">Property Type</div>
                       <div>
                         <div class="rf-group radio-group category">
                           <div
                             className={`rf-toggle radio radio-0 toggle-tag pills ${
-                              propertyTypeId === 0 ? "toggle-active" : ""
+                              propertyType === "Residential"
+                                ? "toggle-active"
+                                : ""
                             }`}
                             onClick={() =>
-                              handlePropertyTypeChange("Residential", 0)
+                              handlePropertyTypeChange("Residential")
                             }
                           >
                             <div class="toggle-label">Residential</div>
                           </div>
                           <div
                             className={`rf-toggle radio radio-1 toggle-tag pills ${
-                              propertyTypeId === 1 ? "toggle-active" : ""
+                              propertyType === "Commercial"
+                                ? "toggle-active"
+                                : ""
                             }`}
                             onClick={() =>
-                              handlePropertyTypeChange("Commercial", 1)
+                              handlePropertyTypeChange("Commercial")
                             }
                           >
                             <div class="toggle-label">Commercial</div>
                           </div>
                         </div>
+                        {error.propertyType && (
+                          <p className="error-message">{error.propertyType}</p>
+                        )}
+
                         <div class="errorStyle"></div>
                       </div>
                       <div class="title no-bottom">Looking to</div>
@@ -125,6 +314,10 @@ const Owner = () => {
                           <div class="toggle-label">PG/Co-living</div>
                         </div>
                       </div>
+                      {error.lookingTo && (
+                        <p className="error-message">{error.lookingTo}</p>
+                      )}
+
                       <div class="errorStyle"></div>
 
                       <div class="title no-bottom">Property Type</div>
@@ -132,9 +325,13 @@ const Owner = () => {
                         <div class="rf-group radio-group property_type_id">
                           <div
                             className={`rf-toggle radio radio-0 toggle-tag pills ${
-                              apartmentTypeId === 0 ? "toggle-active" : ""
+                              apartmentTypeId === "Apartment"
+                                ? "toggle-active"
+                                : ""
                             }`}
-                            onClick={() => handleApartmentTypeChange(0)}
+                            onClick={() =>
+                              handleApartmentTypeChange("Apartment")
+                            }
                           >
                             <div class="toggle-label">
                               <div class="property-type">
@@ -145,9 +342,13 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-1 toggle-tag pills ${
-                              apartmentTypeId === 1 ? "toggle-active" : ""
+                              apartmentTypeId === "Independent Floor"
+                                ? "toggle-active"
+                                : ""
                             }`}
-                            onClick={() => handleApartmentTypeChange(1)}
+                            onClick={() =>
+                              handleApartmentTypeChange("Independent Floor")
+                            }
                           >
                             <div class="toggle-label">
                               <div class="property-type">
@@ -160,9 +361,13 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-2 toggle-tag pills ${
-                              apartmentTypeId === 2 ? "toggle-active" : ""
+                              apartmentTypeId === "Independent House"
+                                ? "toggle-active"
+                                : ""
                             }`}
-                            onClick={() => handleApartmentTypeChange(2)}
+                            onClick={() =>
+                              handleApartmentTypeChange("Independent House")
+                            }
                           >
                             <div class="toggle-label">
                               <div class="property-type">
@@ -175,9 +380,9 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-3 toggle-tag pills ${
-                              apartmentTypeId === 3 ? "toggle-active" : ""
+                              apartmentTypeId === "Villa" ? "toggle-active" : ""
                             }`}
-                            onClick={() => handleApartmentTypeChange(3)}
+                            onClick={() => handleApartmentTypeChange("Villa")}
                           >
                             <div class="toggle-label">
                               <div class="property-type">
@@ -188,9 +393,9 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-4 toggle-tag pills ${
-                              apartmentTypeId === 4 ? "toggle-active" : ""
+                              apartmentTypeId === "Plot" ? "toggle-active" : ""
                             }`}
-                            onClick={() => handleApartmentTypeChange(4)}
+                            onClick={() => handleApartmentTypeChange("Plot")}
                           >
                             <div class="toggle-label">
                               <div class="property-type">
@@ -201,9 +406,13 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-5 toggle-tag pills ${
-                              apartmentTypeId === 5 ? "toggle-active" : ""
+                              apartmentTypeId === "Agricultural Land"
+                                ? "toggle-active"
+                                : ""
                             }`}
-                            onClick={() => handleApartmentTypeChange(5)}
+                            onClick={() =>
+                              handleApartmentTypeChange("Agricultural Land")
+                            }
                           >
                             <div class="toggle-label">
                               <div class="property-type">
@@ -215,6 +424,12 @@ const Owner = () => {
                             </div>
                           </div>
                         </div>
+                        {error.apartmentTypeId && (
+                          <p className="error-message">
+                            {error.apartmentTypeId}
+                          </p>
+                        )}
+
                         <div class="errorStyle"></div>
                       </div>
                     </div>
@@ -233,10 +448,15 @@ const Owner = () => {
                             buildingProjectSociety ? "label hidden" : "label"
                           }
                         >
-                          Building/Project/Society (Optional)
+                          Building/Project/Society
                         </label>
                         <ul className="result-cont"></ul>
                       </div>
+                      {error.buildingProjectSociety && (
+                        <p className="error-message">
+                          {error.buildingProjectSociety}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -255,6 +475,9 @@ const Owner = () => {
                         </label>
                         <ul className="result-cont"></ul>
                       </div>
+                      {error.locality && (
+                        <p className="error-message">{error.locality}</p>
+                      )}
                     </div>
                   </div>
 
@@ -265,9 +488,9 @@ const Owner = () => {
                         <div class="rf-group radio-group apartment_type_id">
                           <div
                             className={`rf-toggle radio radio-0 toggle-tag pills ${
-                              bhkTypeId === 0 ? "toggle-active" : ""
+                              bhkTypeId === "1 RK" ? "toggle-active" : ""
                             }`}
-                            onClick={() => handleBhkTypeChange(0)}
+                            onClick={() => handleBhkTypeChange("1 RK")}
                           >
                             <div class="toggle-label">
                               <div class="apartment-type">1 RK</div>
@@ -275,9 +498,9 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-1 toggle-tag pills ${
-                              bhkTypeId === 1 ? "toggle-active" : ""
+                              bhkTypeId === "1 BHK" ? "toggle-active" : ""
                             }`}
-                            onClick={() => handleBhkTypeChange(1)}
+                            onClick={() => handleBhkTypeChange("1 BHK")}
                           >
                             <div class="toggle-label">
                               <div class="apartment-type">1 BHK</div>
@@ -285,9 +508,9 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-2 toggle-tag pills ${
-                              bhkTypeId === 2 ? "toggle-active" : ""
+                              bhkTypeId === "2 BHK" ? "toggle-active" : ""
                             }`}
-                            onClick={() => handleBhkTypeChange(2)}
+                            onClick={() => handleBhkTypeChange("2 BHK")}
                           >
                             <div class="toggle-label">
                               <div class="apartment-type">2 BHK</div>
@@ -295,9 +518,9 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-3 toggle-tag pills ${
-                              bhkTypeId === 3 ? "toggle-active" : ""
+                              bhkTypeId === "3 BHK" ? "toggle-active" : ""
                             }`}
-                            onClick={() => handleBhkTypeChange(3)}
+                            onClick={() => handleBhkTypeChange("3 BHK")}
                           >
                             <div class="toggle-label">
                               <div class="apartment-type">3 BHK</div>
@@ -305,13 +528,17 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-4 toggle-tag pills ${
-                              bhkTypeId === 4 ? "toggle-active" : ""
+                              bhkTypeId === "3+ BHK" ? "toggle-active" : ""
                             }`}
-                            onClick={() => handleBhkTypeChange(4)}
+                            onClick={() => handleBhkTypeChange("3+ BHK")}
                           >
                             <div class="toggle-label">3+ BHK</div>
                           </div>
                         </div>
+                        {error.bhkTypeId && (
+                          <p className="error-message">{error.bhkTypeId}</p>
+                        )}
+
                         <div class="errorStyle"></div>
                       </div>
                     </div>
@@ -331,6 +558,9 @@ const Owner = () => {
                       <span className="helper"> Sq. ft.</span>
                       <ul className="result-cont"></ul>
                     </div>
+                    {error.builtUpArea && (
+                      <p className="error-message">{error.builtUpArea}</p>
+                    )}
 
                     {/* Input field for Cost */}
                     <div className="material-input dropdownContainer">
@@ -346,6 +576,9 @@ const Owner = () => {
                       <span className="helper">Rupees</span>
                       <ul className="result-cont"></ul>
                     </div>
+                    {error.cost && (
+                      <p className="error-message">{error.cost}</p>
+                    )}
                   </div>
                   <div class="field horizontal-free-scroll">
                     <div class="group">
@@ -354,9 +587,13 @@ const Owner = () => {
                         <div class="rf-group radio-group furnish_type_id">
                           <div
                             className={`rf-toggle radio radio-0 toggle-tag pills ${
-                              furnishTypeId === 0 ? "toggle-active" : ""
+                              furnishTypeId === "Fully Furnished"
+                                ? "toggle-active"
+                                : ""
                             }`}
-                            onClick={() => handleFurnishTypeChange(0)}
+                            onClick={() =>
+                              handleFurnishTypeChange("Fully Furnished")
+                            }
                           >
                             <div class="toggle-label">
                               <div class="furnish-type">
@@ -367,9 +604,13 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-1 toggle-tag pills ${
-                              furnishTypeId === 1 ? "toggle-active" : ""
+                              furnishTypeId === "Semi Furnished"
+                                ? "toggle-active"
+                                : ""
                             }`}
-                            onClick={() => handleFurnishTypeChange(1)}
+                            onClick={() =>
+                              handleFurnishTypeChange("Semi Furnished")
+                            }
                           >
                             <div class="toggle-label">
                               <div class="furnish-type">
@@ -380,9 +621,13 @@ const Owner = () => {
                           </div>
                           <div
                             className={`rf-toggle radio radio-2 toggle-tag pills ${
-                              furnishTypeId === 2 ? "toggle-active" : ""
+                              furnishTypeId === "Unfurnished"
+                                ? "toggle-active"
+                                : ""
                             }`}
-                            onClick={() => handleFurnishTypeChange(2)}
+                            onClick={() =>
+                              handleFurnishTypeChange("Unfurnished")
+                            }
                           >
                             <div class="toggle-label">
                               <div class="furnish-type">
@@ -392,6 +637,10 @@ const Owner = () => {
                             </div>
                           </div>
                         </div>
+                        {error.furnishTypeId && (
+                          <p className="error-message">{error.furnishTypeId}</p>
+                        )}
+
                         <div class="errorStyle"></div>
                       </div>
                     </div>
@@ -408,7 +657,7 @@ const Owner = () => {
                     />
                     <div class="addPhotos_textContainer__2iQJ8 caption_strong_medium">
                       <span class="addPhotos_addPhotosText__8GzHO caption_strong_medium">
-                        + Add atleast 5 photos
+                        + Add atleast 4 photos
                       </span>
                       <br />
                       <span class="vert-align-middle">
@@ -429,18 +678,39 @@ const Owner = () => {
                         class="pageComponent
                 buttons_secondaryRegular__3R1_d
                 buttons_semi__1it_o
-								 undefined"
+								 undefined btn-image"
                       >
-                        <span>
-                          <span>Upload Photos Now</span>
-                        </span>
+                        <span>Upload Photos Now</span>
+
+                        <input
+                          id="file-input"
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileChange}
+                          multiple
+                        />
                       </button>
                     </div>
-                    
+                  </div>
+                  {error.images && (
+                    <p className="error-message">{error.images}</p>
+                  )}
+
+                  <div className="image-preview">
+                    {images.map((image, index) => (
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`Uploaded ${index + 1}`}
+                      />
+                    ))}
                   </div>
                 </div>
                 <div class="css-bylwsl">
-                  <button class="selfupload-cta-button css-1olr0sc">
+                  <button
+                    className="selfupload-cta-button css-1olr0sc"
+                    onClick={handleListProperty}
+                  >
                     List Property
                   </button>
                 </div>

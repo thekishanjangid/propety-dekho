@@ -694,7 +694,7 @@ button {
     }
   }
   .css-1olr0sc {
-    background: rgb(54, 201, 145);
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25), transparent) rgb(94, 63, 224);
     border-radius: 8px;
     font-weight: 500;
     font-size: 14px;
@@ -703,7 +703,7 @@ button {
     text-align: center;
     color: rgb(255, 255, 255);
     border: none;
-    box-shadow: rgb(76, 189, 148) 0px -2px inset;
+    box-shadow: rgb(94, 63, 224) 0px -2px inset;
   }
   .css-1ac9j98 {
     height: 36px;
@@ -1836,7 +1836,66 @@ i {
 
 
 
+/* ..................img uplode section .................  */
+
+
+
+.btn-image {
+  position: relative;
+  padding: 11px 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: black;
+  background-color: #F6F7F9;
+  border: 0;
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.btn-image input[type="file"] {
+  cursor: pointer;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  transform: scale(3);
+  opacity: 0;
+}
+.btn-image:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.image-uploader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-container {
+  margin-bottom: 20px;
+}
+
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-preview img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 5px;
+}
 
 
 
 
+
+
+.error-message{
+  font-size: 11px;
+  margin-top: 8px;
+  color: red;
+
+}

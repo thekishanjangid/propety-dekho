@@ -77,7 +77,7 @@ body {
     position: relative;
     font-size: 13px;
     font-weight: 500;
-    left: 550px;
+    left: 510px;
 
     grid-template-columns: 0.2fr 0.3fr 0.2fr 0.2fr 0.2fr;
 }
