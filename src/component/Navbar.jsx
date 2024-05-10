@@ -49,7 +49,7 @@ const Navbar = ({ setCount, count, category, setcategory }) => {
             <Link to="/owner"><div class="style__postContainer"> <div class="style__post">Post property</div> <div class="fre__outerwrap">FREE<div class="fre__innerwrap"></div>
               </div>
          </div></Link>
-                <div id="contact" className='mt-1'><Link to="/Home">Contact Us</Link></div>
+                <div id="contact" className='mt-1'><Link to="/Contactus">Contact Us</Link></div>
                 <div id="about" className='mt-1'><Link to="/Home">About Us</Link></div>
                 {/* Check if the user is logged in */}
                 {localStorage.getItem("LoggedInUser") ? (

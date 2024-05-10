@@ -122,15 +122,17 @@ const Owner = () => {
     return isValid;
   };
 
-  const handleListProperty = () => {
+  const handleListProperty = (e) => {
+    e.preventDefault();
+    
     if (handleValidation()) {
       // Retrieve existing data from localStorage
       const existingData =
         JSON.parse(localStorage.getItem("propertyData")) || [];
-
+  
       // Ensure that existingData is an array
       const updatedData = Array.isArray(existingData) ? existingData : [];
-
+  
       // Combine existing data with the new data
       const newData = {
         dealerType,
@@ -145,14 +147,38 @@ const Owner = () => {
         locality,
         images,
       };
-
+  
       // Add the new data to the existing data
       updatedData.push(newData);
-
+  
       // Save the updated data to localStorage
       localStorage.setItem("propertyData", JSON.stringify(updatedData));
-
-      // Redirect or perform other actions
+  
+      // Reset all state values to their initial state
+      setDealerType(null);
+      setPropertyType(null);
+      setLookingTo(null);
+      setApartmentTypeId(null);
+      setBhkTypeId(null);
+      setFurnishTypeId(null);
+      setBuiltUpArea("");
+      setCost("");
+      setBuildingProjectSociety("");
+      setLocality("");
+      setImages([]);
+      setError({
+        dealerType: "",
+        propertyType: "",
+        lookingTo: "",
+        apartmentTypeId: "",
+        bhkTypeId: "",
+        furnishTypeId: "",
+        builtUpArea: "",
+        cost: "",
+        buildingProjectSociety: "",
+        locality: "",
+        images: "",
+      });
     }
   };
 

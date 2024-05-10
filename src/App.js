@@ -8,7 +8,7 @@ import "./App.css";
 import Properties from "./component/Properties";
 import ProductDetails from "./component/ProductDetails";
 import Owner from "./component/owner";
-
+import Contact from "./component/Contectus";
 
 const App = () => {
   const [loggedData, setLoggedData] = useState();
@@ -33,13 +33,18 @@ const App = () => {
       />
 
       <Routes>
-        <Route path="/" element={<Signin setLoginEmail={setLoginEmail} loginEmail={loginEmail} />} />
+        <Route
+          path="/"
+          element={
+            <Signin setLoginEmail={setLoginEmail} loginEmail={loginEmail} />
+          }
+        />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/productDetails" element={<ProductDetails />} />
         <Route path="/Properties" element={<Properties />} />
         <Route path="/owner" element={<Owner />} />
-
+        <Route path="/Contactus" element={<Contact />} />
       </Routes>
     </div>
   );
