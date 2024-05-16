@@ -4,7 +4,14 @@ import Swal from "sweetalert2";
 
 const Signup = () => {
   const [FormData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
+    mobileNo: "",
+    companyName: "",
+    street: "",
+    city: "",
+    state: "",
+    zipCode: "",
     email: "",
     password: "",
   });
@@ -44,15 +51,30 @@ const Signup = () => {
 
   return (
     <div>
-      <center >
-        <form style={{ position : "relative" , top : "200px" }} className="w-50 p-5  rounded-4  shadow text-start">
-          <div class="mb-3">
+      <center>
+        <form
+          style={{ position: "relative", top: "100px" }}
+          className="row w-50 p-5  rounded-4  shadow text-start"
+        >
+          <div class="mb-3 col-md-6">
             <label for="name" class="form-label">
-              Name
+              firstName
             </label>
             <input
               type="text"
-              name="name"
+              name="firstName"
+              class="form-control"
+              id="name"
+              onChange={changeHandle}
+            />
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="name" class="form-label">
+              lastName
+            </label>
+            <input
+              type="text"
+              name="lastName"
               class="form-control"
               id="name"
               onChange={changeHandle}
@@ -69,6 +91,78 @@ const Signup = () => {
               id="email"
               onChange={changeHandle}
               aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="name" class="form-label">
+              mobile No.
+            </label>
+            <input
+              type="number"
+              name="mobile no."
+              class="form-control"
+              id="email"
+              onChange={changeHandle}
+            />
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="name" class="form-label">
+              companyName
+            </label>
+            <input
+              type="text"
+              name="companyName"
+              class="form-control"
+              id="email"
+              onChange={changeHandle}
+            />
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="name" class="form-label">
+              street
+            </label>
+            <input
+              type="text"
+              name="street"
+              class="form-control"
+              id="email"
+              onChange={changeHandle}
+            />
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="name" class="form-label">
+              city
+            </label>
+            <input
+              type="text"
+              name="city"
+              class="form-control"
+              id="email"
+              onChange={changeHandle}
+            />
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="name" class="form-label">
+              state
+            </label>
+            <input
+              type="text"
+              name="state"
+              class="form-control"
+              id="email"
+              onChange={changeHandle}
+            />
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="name" class="form-label">
+              zipCode
+            </label>
+            <input
+              type="number"
+              name="zipCode"
+              class="form-control"
+              id="email"
+              onChange={changeHandle}
             />
           </div>
           <div class="mb-3">

@@ -5,11 +5,12 @@ import "./owner.css";
 
 const Owner = () => {
   const [dealerType, setDealerType] = useState(null);
+  const [landlord, setLandlord] = useState("");
+
   const [propertyType, setPropertyType] = useState(null);
   const [lookingTo, setLookingTo] = useState(null);
   const [apartmentTypeId, setApartmentTypeId] = useState(null);
   const [bhkTypeId, setBhkTypeId] = useState(null);
-  const [furnishTypeId, setFurnishTypeId] = useState(null);
 
   const [builtUpArea, setBuiltUpArea] = useState("");
   const [cost, setCost] = useState("");
@@ -18,6 +19,7 @@ const Owner = () => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState({
     dealerType: "",
+    landlord: "",
     propertyType: "",
     lookingTo: "",
     apartmentTypeId: "",
@@ -39,6 +41,12 @@ const Owner = () => {
       isValid = false;
     } else {
       newError.dealerType = "";
+    }
+    if (!landlord) {
+      newError.landlord = "landlord name is required";
+      isValid = false;
+    } else {
+      newError.landlord = "";
     }
 
     if (!propertyType) {
@@ -74,13 +82,6 @@ const Owner = () => {
       isValid = false;
     } else {
       newError.bhkTypeId = "";
-    }
-
-    if (!furnishTypeId) {
-      newError.furnishTypeId = "Furnish type ID is required";
-      isValid = false;
-    } else {
-      newError.furnishTypeId = "";
     }
 
     if (!builtUpArea) {
@@ -124,43 +125,43 @@ const Owner = () => {
 
   const handleListProperty = (e) => {
     e.preventDefault();
-    
+
     if (handleValidation()) {
       // Retrieve existing data from localStorage
       const existingData =
         JSON.parse(localStorage.getItem("propertyData")) || [];
-  
+
       // Ensure that existingData is an array
       const updatedData = Array.isArray(existingData) ? existingData : [];
-  
+
       // Combine existing data with the new data
       const newData = {
         dealerType,
+        landlord,
         propertyType,
         lookingTo,
         apartmentTypeId,
         bhkTypeId,
-        furnishTypeId,
         builtUpArea,
         cost,
         buildingProjectSociety,
         locality,
         images,
       };
-  
+
       // Add the new data to the existing data
       updatedData.push(newData);
-  
+
       // Save the updated data to localStorage
       localStorage.setItem("propertyData", JSON.stringify(updatedData));
-  
+
       // Reset all state values to their initial state
       setDealerType(null);
+      setLandlord("")
       setPropertyType(null);
       setLookingTo(null);
       setApartmentTypeId(null);
       setBhkTypeId(null);
-      setFurnishTypeId(null);
       setBuiltUpArea("");
       setCost("");
       setBuildingProjectSociety("");
@@ -168,6 +169,7 @@ const Owner = () => {
       setImages([]);
       setError({
         dealerType: "",
+        landlord:"",
         propertyType: "",
         lookingTo: "",
         apartmentTypeId: "",
@@ -191,6 +193,11 @@ const Owner = () => {
   const handleDealerTypeChange = (type) => {
     setDealerType(type);
   };
+
+  const handleLandlordChange = (event) => {
+    setLandlord(event.target.value);
+  };
+
   const handlePropertyTypeChange = (type) => {
     setPropertyType(type);
   };
@@ -204,9 +211,6 @@ const Owner = () => {
   };
   const handleBhkTypeChange = (type) => {
     setBhkTypeId(type);
-  };
-  const handleFurnishTypeChange = (type) => {
-    setFurnishTypeId(type);
   };
 
   // Event handler to update the builtUpArea state
@@ -245,7 +249,7 @@ const Owner = () => {
                 <div class="form-cont">
                   <div class="field horizontal-free-scroll first-form-field">
                     <div class="group">
-                      <div class="title no-bottom">I am</div>
+                      <div class="title no-bottom">postedAt</div>
                       <div>
                         <div class="rf-group radio-group category">
                           <div
@@ -279,6 +283,7 @@ const Owner = () => {
 
                         <div class="errorStyle"></div>
                       </div>
+                      
                       <div class="title no-bottom">Property Type</div>
                       <div>
                         <div class="rf-group radio-group category">
@@ -346,7 +351,7 @@ const Owner = () => {
 
                       <div class="errorStyle"></div>
 
-                      <div class="title no-bottom">Property Type</div>
+                      <div class="title no-bottom">property Category</div>
                       <div>
                         <div class="rf-group radio-group property_type_id">
                           <div
@@ -460,6 +465,27 @@ const Owner = () => {
                       </div>
                     </div>
                   </div>
+                  <div className="field">
+                        <div className="css-1pt2cfh">
+                          <div className="material-input dropdownContainer">
+                            <input
+                              type="text"
+                              value={landlord}
+                              onChange={handleLandlordChange}
+                              className={landlord ? "has-value" : ""}
+                            />
+                            <label
+                              className={landlord ? "label hidden" : "label"}
+                            >
+                              Owner / agent / Builder - Name
+                            </label>
+                            <ul className="result-cont"></ul>
+                          </div>
+                          {error.landlord && (
+                            <p className="error-message">{error.landlord}</p>
+                          )}
+                        </div>
+                      </div>
                   <div className="field">
                     <div className="css-1pt2cfh">
                       <div className="material-input dropdownContainer">
@@ -606,71 +632,7 @@ const Owner = () => {
                       <p className="error-message">{error.cost}</p>
                     )}
                   </div>
-                  <div class="field horizontal-free-scroll">
-                    <div class="group">
-                      <div class="title no-bottom">Furnish Type</div>
-                      <div>
-                        <div class="rf-group radio-group furnish_type_id">
-                          <div
-                            className={`rf-toggle radio radio-0 toggle-tag pills ${
-                              furnishTypeId === "Fully Furnished"
-                                ? "toggle-active"
-                                : ""
-                            }`}
-                            onClick={() =>
-                              handleFurnishTypeChange("Fully Furnished")
-                            }
-                          >
-                            <div class="toggle-label">
-                              <div class="furnish-type">
-                                <i class="furnish-icon icon-furnished"></i>
-                                <span>Fully Furnished</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className={`rf-toggle radio radio-1 toggle-tag pills ${
-                              furnishTypeId === "Semi Furnished"
-                                ? "toggle-active"
-                                : ""
-                            }`}
-                            onClick={() =>
-                              handleFurnishTypeChange("Semi Furnished")
-                            }
-                          >
-                            <div class="toggle-label">
-                              <div class="furnish-type">
-                                <i class="furnish-icon icon-semi_furnished"></i>
-                                <span>Semi Furnished</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className={`rf-toggle radio radio-2 toggle-tag pills ${
-                              furnishTypeId === "Unfurnished"
-                                ? "toggle-active"
-                                : ""
-                            }`}
-                            onClick={() =>
-                              handleFurnishTypeChange("Unfurnished")
-                            }
-                          >
-                            <div class="toggle-label">
-                              <div class="furnish-type">
-                                <i class="furnish-icon icon-unfurnished"></i>
-                                <span>Unfurnished</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        {error.furnishTypeId && (
-                          <p className="error-message">{error.furnishTypeId}</p>
-                        )}
 
-                        <div class="errorStyle"></div>
-                      </div>
-                    </div>
-                  </div>
                   <div
                     class="addPhotos_addPhotosbox__QBIaz   pageComponent"
                     data-label="UPLOAD_PHOTOS_CLICK"
@@ -691,7 +653,7 @@ const Owner = () => {
                       </span>
                     </div>
                     <div class="addPhotos_textContainer__2iQJ8 caption_strong_small">
-                      Upto 50 photos • Max. size 10 MB • Formats: png, jpg,
+                      Upto 4 photos • Max. size 10 MB • Formats: png, jpg,
                       jpeg, gif, webp, heic, heif.
                     </div>
                     <div class="addPhotos_textContainer__2iQJ8 addPhotos_uploadButton__xS1yH caption_strong_medium">
